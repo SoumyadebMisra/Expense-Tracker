@@ -4,14 +4,14 @@ import { GlobalContext } from "../context/globalState";
 export default () => {
   const { transactions } = useContext(GlobalContext);
   const totalBal = transactions
-    .map((t) => t.amount)
+    .map((t) => parseInt(t.amount))
     .reduce((prev, cur) => prev + cur, 0);
   const income = transactions
-    .map((t) => t.amount)
+    .map((t) => parseInt(t.amount))
     .filter((a) => a > 0)
     .reduce((prev, cur) => prev + cur, 0);
   const expense = transactions
-    .map((t) => t.amount)
+    .map((t) => parseInt(t.amount))
     .filter((a) => a < 0)
     .reduce((prev, cur) => prev + cur, 0);
   return (
